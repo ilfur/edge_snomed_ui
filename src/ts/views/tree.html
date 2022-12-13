@@ -1,0 +1,38 @@
+<!--
+ Copyright (c) 2014, 2022, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding oj-flex oj-sm-flex-direction-column oj-sm-width-full">
+   <div class="oj-panel oj-flex-item oj-flex oj-sm-flex-direction-column oj-sm-margin-2x ">
+     <span class="oj-panel oj-flex-item">
+        SNOMED-CT ID: <oj-bind-text value="[[selectedNodeConceptId]]"></oj-bind-text>
+     </span>
+     <span class="oj-panel oj-flex-item">
+        Term: <oj-bind-text value="[[selectedNodeTitle]]"></oj-bind-text>
+     </span>
+     <span class="oj-panel oj-flex-item">
+        Definition: <oj-bind-text value="[[selectedNodeDetail]]"></oj-bind-text>
+     </span>
+  </div>
+
+  <div id="treeview-container" class="oj-panel oj-flex-item oj-flex oj-sm-flex-direction-row">
+     <div class="oj-flex-item oj-flex oj-sm-margin-2x oj-typography-body-xs">
+	  <oj-tree-view
+            class="oj-flex-item oj-typography-body-xs"
+            id="snomedtreeview"
+            data="[[dataprovider]]"
+	    expanded="{{expanded}}"
+	    on-current-item-changed="[[currentItemChanged]]"
+            selection-mode="single"
+            aria-label="Tree View with JSON Data">
+            <template slot="itemTemplate" data-oj-as="row">
+              <span class="oj-ux-ico-id-medical oj-treeview-item-content-icon"></span>
+              <span class="oj-treeview-item-text">
+                <oj-bind-text value="[[row.data.term]]"></oj-bind-text>
+              </span>
+            </template>
+          </oj-tree-view>
+    </div>
+  </div>
+</div>

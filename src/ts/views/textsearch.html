@@ -1,0 +1,54 @@
+<!--
+ Copyright (c) 2014, 2022, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding oj-flex oj-sm-flex-direction-column oj-sm-width-full">
+  <div class="oj-panel oj-flex oj-flex-item ">
+	  <oj-input-text class="oj-flex-item" id="inputSrchtxt" label-hint="Search Text" value="{{searchText}}"></oj-input-text>
+	  <oj-button class="oj-flex-item" id="buttonSearch" on-oj-action="[[fetchData]]">Query</oj-button>
+	  <oj-text-area class="oj-flex-item "
+                  label-hint="Current Selection"
+                  readonly="true"
+                  value="[[selectionText]]">
+	  </oj-text-area>
+  </div>
+  <div id="treeview-container" class="oj-panel oj-flex-item oj-flex oj-sm-flex-direction-row">
+     <div class="oj-flex-item oj-flex oj-sm-margin-2x oj-sm-width-2/5 oj-typography-body-xs">
+	 <oj-table
+            id="snomedtable"
+            aria-label="SNOMED Concepts Table"
+            accessibility.row-header="conceptId"
+            data="[[dataprovider]]"
+            selection-mode='{"row": "single", "column": "single"}'
+            dnd='{"reorder": {"columns": "enabled"}}'
+	    selected="{{selectedItems}}"
+            selection-mode="single"
+            on-selected-changed="[[selectionChanged]]"
+            scroll-policy="loadAll"
+            columns='[{"headerText": "Concept ID",
+                       "field": "conceptId",
+                       "headerClassName": "oj-sm-only-hide",
+                       "className": "oj-sm-only-hide",
+                       "resizable": "enabled",
+		       "maxWidth": "150",
+                       "id": "conceptId"},
+                      {"headerText": "SNOMED Term",
+                       "field": "term",
+                       "resizable": "enabled",
+		       "maxWidth": "250",
+                       "id": "term"},
+                      {"headerText": "Definition",
+                       "field": "definition",
+                       "headerClassName": "oj-sm-only-hide",
+                       "className": "oj-sm-only-hide",
+                       "resizable": "enabled",
+		       "maxWidth": "400",
+		       "style": "white-space:normal;word-wrap:break-word; text-align: left;vertical-align: top;",
+                       "id": "definition"}
+                      ]'
+            class="oj-flex-item oj-flex-container">
+	 </oj-table>
+    </div>
+  </div>
+</div>
